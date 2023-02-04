@@ -1,0 +1,2 @@
+# aur-template
+Package template
