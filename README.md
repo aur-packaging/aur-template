@@ -7,3 +7,4 @@ A very simple bin packaging template is in this repo.
 $ makepkg --printsrcinfo > .SRCINFO
 $ makepkg -sri .
 ```
+

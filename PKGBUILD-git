@@ -1,0 +1,38 @@
+# Maintainer: Ruben Kharel <talkto@rubenk.com.np>
+
+pkgname=package-name
+_pkgname=alternative-name
+pkgver=0
+pkgrel=1
+pkgdesc="A Description goes here"
+
+arch=("any") #or x86_64 or any architectures that might support
+url="https://github.com/xyz/xyz"
+license=("GPL")
+
+makedepends=("dependency1" "dependency2")
+depends=("dependency1" "dependency2")
+provides=("${pkgname}")
+conflict=("${pkgname}")
+md5sums=("SKIP")
+source=("git+${url}")
+
+pkgver() {
+	cd "${_pkgname}"
+	# https://wiki.archlinux.org/title/VCS_package_guidelines#The_pkgver()_function
+	# check which method to use from above docs
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "${_pkgname}"
+	# do necessary stuff to build
+	# make xyz
+}
+
+package() {
+	cd "${_pkgname}"
+	install -Dm755 build/bin/xyz "${pkgdir}/usr/bin/xyz"
+	install -Dm755 build/xyz.desktop "${pkgdir}/usr/share/applications/xyz.desktop"
+}
+
