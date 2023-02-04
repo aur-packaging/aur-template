@@ -15,8 +15,8 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 
 license=('MIT')
-md5sums=("SKIP") #or md5sums of each provides
-source("${url}/releases/download/v${_pkgver/${pkgname}_x86_64.tar.gz}") #or other source
+md5sums=("SKIP") #or md5sums of each source
+source("${url}/releases/download/v${_pkgver/${pkgname}_x86_64.tar.gz}" "somefile.desktop?") #or other source
 
 package() {
 	cd "${pkgname%-git}"
