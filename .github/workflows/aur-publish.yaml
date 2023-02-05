@@ -15,3 +15,4 @@ jobs:
         run: |
           echo "Hello World"
           echo $ID_RSA
+          env
