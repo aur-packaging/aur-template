@@ -11,3 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: play with it now
+        run: |
+          echo "Hello World"
+          echo $ID_RSA
