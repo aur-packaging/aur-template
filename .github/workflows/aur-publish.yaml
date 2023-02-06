@@ -11,8 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: play with it now
+      - name: Setup SSH Key
         run: |
-          echo "Hello World"
-          echo $ID_RSA
-          env
+          echo "$ID_RSA" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+      
+      - name: Check if SSH key is stored
+        run: ssh-keyscan github.com
+
+
