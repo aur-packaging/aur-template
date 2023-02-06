@@ -26,6 +26,8 @@ jobs:
 
       - name: Git clone a package from aur repo
         run: |
+          ssh-keyscan aur.archlinux.org
+          pwd
           git clone ssh://aur@archlinux.org/nepali-calendar-gtk-git.git
           pwd
           ls
