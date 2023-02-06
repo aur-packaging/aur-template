@@ -9,15 +9,19 @@ jobs:
   check-repo:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout this fine duck
+        uses: actions/checkout@v3
 
-      - uses: shimataro/ssh-key-action@v2
+      - name: Load ssh-key
+        uses: shimataro/ssh-key-action@v2
         with:
           key: ${{ secrets.SSH_KEY }}
           name: aur
           known_hosts: ${{ secrets.KNOWN_HOST }}
           if_key_exists: fail
+      
+      - name: verify ssh-key
         run: |
-          ssk-keyscan aur.archlinux.org
+          ssh-keyscan aur.archlinux.org
           
 
