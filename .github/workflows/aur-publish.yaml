@@ -11,12 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup SSH Key
-        run: |
-          echo "$ID_RSA" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-      
-      - name: Check if SSH key is stored
-        run: ssh-keyscan github.com
-
+      - uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: aur
+          known_hosts: ${{ secrets.KNOWN_HOST }}
+          if_key_exists: fail
+        run:
+          ssk-keyscan aur.archlinux.org
+          
 
