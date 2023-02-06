@@ -6,12 +6,9 @@ on:
       - "main"
 
 jobs:
-  check-repo:
+  bind and grind:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout this fine duck
-        uses: actions/checkout@v3
-
       - name: Load ssh-key
         uses: shimataro/ssh-key-action@v2
         with:
@@ -24,4 +21,14 @@ jobs:
         run: |
           ssh-keyscan aur.archlinux.org
           
+      - name: Checkout this fine duck
+        uses: actions/checkout@v3
+
+      - name: Git clone a package from aur repo
+        run: |
+          git clone ssh://aur@archlinux.org/nepali-calendar-gtk-git.git
+          pwd
+          ls
+          cd nepali-calendar-gtk-git
+          ls -la
 
