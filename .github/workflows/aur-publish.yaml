@@ -17,7 +17,7 @@ jobs:
           name: aur
           known_hosts: ${{ secrets.KNOWN_HOST }}
           if_key_exists: fail
-        run:
+        run: |
           ssk-keyscan aur.archlinux.org
           
 
