@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  bind and grind:
+  bindNgrind:
     runs-on: ubuntu-latest
     steps:
       - name: Load ssh-key
